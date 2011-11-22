@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		277247F4147A8E0200B9FC56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277247F3147A8E0200B9FC56 /* UIKit.framework */; };
+		277247F6147A8E0200B9FC56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277247F5147A8E0200B9FC56 /* Foundation.framework */; };
+		277247F8147A8E0200B9FC56 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277247F7147A8E0200B9FC56 /* CoreGraphics.framework */; };
+		277247FA147A8E0200B9FC56 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277247F9147A8E0200B9FC56 /* CoreData.framework */; };
+		27724800147A8E0200B9FC56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 277247FE147A8E0200B9FC56 /* InfoPlist.strings */; };
+		27724802147A8E0200B9FC56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27724801147A8E0200B9FC56 /* main.m */; };
+		27724806147A8E0200B9FC56 /* iLendAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27724805147A8E0200B9FC56 /* iLendAppDelegate.m */; };
+		27724809147A8E0200B9FC56 /* iLend.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27724807147A8E0200B9FC56 /* iLend.xcdatamodeld */; };
+		2772480C147A8E0200B9FC56 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2772480A147A8E0200B9FC56 /* MainWindow.xib */; };
+		2772480F147A8E0200B9FC56 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2772480E147A8E0200B9FC56 /* RootViewController.m */; };
+		2772481B147A91DC00B9FC56 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27724819147A91DC00B9FC56 /* DetailViewController.m */; };
+		2772481C147A91DC00B9FC56 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2772481A147A91DC00B9FC56 /* DetailViewController.xib */; };
+		27724820147A947E00B9FC56 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2772481E147A947E00B9FC56 /* AddViewController.m */; };
+		2772482B147A9A2800B9FC56 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2772482C147A9A2800B9FC56 /* RootViewController.xib */; };
+		2772482D147A9A2D00B9FC56 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2772482E147A9A2D00B9FC56 /* AddViewController.xib */; };
+		27724832147A9DFC00B9FC56 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27724830147A9DFC00B9FC56 /* PickerViewController.m */; };
+		27724833147A9DFC00B9FC56 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27724831147A9DFC00B9FC56 /* PickerViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		277247EF147A8E0200B9FC56 /* iLend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLend.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		277247F3147A8E0200B9FC56 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		277247F5147A8E0200B9FC56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		277247F7147A8E0200B9FC56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		277247F9147A8E0200B9FC56 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		277247FD147A8E0200B9FC56 /* iLend-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iLend-Info.plist"; sourceTree = "<group>"; };
+		277247FF147A8E0200B9FC56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27724801147A8E0200B9FC56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		27724803147A8E0200B9FC56 /* iLend-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iLend-Prefix.pch"; sourceTree = "<group>"; };
+		27724804147A8E0200B9FC56 /* iLendAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iLendAppDelegate.h; sourceTree = "<group>"; };
+		27724805147A8E0200B9FC56 /* iLendAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iLendAppDelegate.m; sourceTree = "<group>"; };
+		27724808147A8E0200B9FC56 /* iLend.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iLend.xcdatamodel; sourceTree = "<group>"; };
+		2772480B147A8E0200B9FC56 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		2772480D147A8E0200B9FC56 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		2772480E147A8E0200B9FC56 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		27724818147A91DC00B9FC56 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../DetailViewController.h; sourceTree = "<group>"; };
+		27724819147A91DC00B9FC56 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../DetailViewController.m; sourceTree = "<group>"; };
+		2772481A147A91DC00B9FC56 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController.xib; path = ../DetailViewController.xib; sourceTree = "<group>"; };
+		2772481D147A947E00B9FC56 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		2772481E147A947E00B9FC56 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		2772482C147A9A2800B9FC56 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		2772482E147A9A2D00B9FC56 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		2772482F147A9DFB00B9FC56 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		27724830147A9DFC00B9FC56 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
+		27724831147A9DFC00B9FC56 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		277247EC147A8E0200B9FC56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				277247F4147A8E0200B9FC56 /* UIKit.framework in Frameworks */,
+				277247F6147A8E0200B9FC56 /* Foundation.framework in Frameworks */,
+				277247F8147A8E0200B9FC56 /* CoreGraphics.framework in Frameworks */,
+				277247FA147A8E0200B9FC56 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		277247E4147A8E0200B9FC56 = {
+			isa = PBXGroup;
+			children = (
+				277247FB147A8E0200B9FC56 /* iLend */,
+				277247F2147A8E0200B9FC56 /* Frameworks */,
+				277247F0147A8E0200B9FC56 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		277247F0147A8E0200B9FC56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				277247EF147A8E0200B9FC56 /* iLend.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		277247F2147A8E0200B9FC56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				277247F3147A8E0200B9FC56 /* UIKit.framework */,
+				277247F5147A8E0200B9FC56 /* Foundation.framework */,
+				277247F7147A8E0200B9FC56 /* CoreGraphics.framework */,
+				277247F9147A8E0200B9FC56 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		277247FB147A8E0200B9FC56 /* iLend */ = {
+			isa = PBXGroup;
+			children = (
+				27724818147A91DC00B9FC56 /* DetailViewController.h */,
+				27724819147A91DC00B9FC56 /* DetailViewController.m */,
+				2772481A147A91DC00B9FC56 /* DetailViewController.xib */,
+				27724804147A8E0200B9FC56 /* iLendAppDelegate.h */,
+				27724805147A8E0200B9FC56 /* iLendAppDelegate.m */,
+				2772480A147A8E0200B9FC56 /* MainWindow.xib */,
+				2772480D147A8E0200B9FC56 /* RootViewController.h */,
+				2772480E147A8E0200B9FC56 /* RootViewController.m */,
+				2772482C147A9A2800B9FC56 /* RootViewController.xib */,
+				27724807147A8E0200B9FC56 /* iLend.xcdatamodeld */,
+				277247FC147A8E0200B9FC56 /* Supporting Files */,
+				2772481D147A947E00B9FC56 /* AddViewController.h */,
+				2772481E147A947E00B9FC56 /* AddViewController.m */,
+				2772482E147A9A2D00B9FC56 /* AddViewController.xib */,
+				2772482F147A9DFB00B9FC56 /* PickerViewController.h */,
+				27724830147A9DFC00B9FC56 /* PickerViewController.m */,
+				27724831147A9DFC00B9FC56 /* PickerViewController.xib */,
+			);
+			path = iLend;
+			sourceTree = "<group>";
+		};
+		277247FC147A8E0200B9FC56 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				277247FD147A8E0200B9FC56 /* iLend-Info.plist */,
+				277247FE147A8E0200B9FC56 /* InfoPlist.strings */,
+				27724801147A8E0200B9FC56 /* main.m */,
+				27724803147A8E0200B9FC56 /* iLend-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		277247EE147A8E0200B9FC56 /* iLend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27724815147A8E0200B9FC56 /* Build configuration list for PBXNativeTarget "iLend" */;
+			buildPhases = (
+				277247EB147A8E0200B9FC56 /* Sources */,
+				277247EC147A8E0200B9FC56 /* Frameworks */,
+				277247ED147A8E0200B9FC56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iLend;
+			productName = iLend;
+			productReference = 277247EF147A8E0200B9FC56 /* iLend.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		277247E6147A8E0200B9FC56 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 277247E9147A8E0200B9FC56 /* Build configuration list for PBXProject "iLend" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				de,
+			);
+			mainGroup = 277247E4147A8E0200B9FC56;
+			productRefGroup = 277247F0147A8E0200B9FC56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				277247EE147A8E0200B9FC56 /* iLend */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		277247ED147A8E0200B9FC56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27724800147A8E0200B9FC56 /* InfoPlist.strings in Resources */,
+				2772480C147A8E0200B9FC56 /* MainWindow.xib in Resources */,
+				2772482B147A9A2800B9FC56 /* RootViewController.xib in Resources */,
+				2772481C147A91DC00B9FC56 /* DetailViewController.xib in Resources */,
+				2772482D147A9A2D00B9FC56 /* AddViewController.xib in Resources */,
+				27724833147A9DFC00B9FC56 /* PickerViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		277247EB147A8E0200B9FC56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27724802147A8E0200B9FC56 /* main.m in Sources */,
+				27724806147A8E0200B9FC56 /* iLendAppDelegate.m in Sources */,
+				27724809147A8E0200B9FC56 /* iLend.xcdatamodeld in Sources */,
+				2772480F147A8E0200B9FC56 /* RootViewController.m in Sources */,
+				2772481B147A91DC00B9FC56 /* DetailViewController.m in Sources */,
+				27724820147A947E00B9FC56 /* AddViewController.m in Sources */,
+				27724832147A9DFC00B9FC56 /* PickerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		277247FE147A8E0200B9FC56 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				277247FF147A8E0200B9FC56 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2772480A147A8E0200B9FC56 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2772480B147A8E0200B9FC56 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27724813147A8E0200B9FC56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		27724814147A8E0200B9FC56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27724816147A8E0200B9FC56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLend/iLend-Prefix.pch";
+				INFOPLIST_FILE = "iLend/iLend-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		27724817147A8E0200B9FC56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLend/iLend-Prefix.pch";
+				INFOPLIST_FILE = "iLend/iLend-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		277247E9147A8E0200B9FC56 /* Build configuration list for PBXProject "iLend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27724813147A8E0200B9FC56 /* Debug */,
+				27724814147A8E0200B9FC56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27724815147A8E0200B9FC56 /* Build configuration list for PBXNativeTarget "iLend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27724816147A8E0200B9FC56 /* Debug */,
+				27724817147A8E0200B9FC56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		27724807147A8E0200B9FC56 /* iLend.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				27724808147A8E0200B9FC56 /* iLend.xcdatamodel */,
+			);
+			currentVersion = 27724808147A8E0200B9FC56 /* iLend.xcdatamodel */;
+			path = iLend.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 277247E6147A8E0200B9FC56 /* Project object */;
+}
