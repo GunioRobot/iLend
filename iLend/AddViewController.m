@@ -11,7 +11,7 @@
 
 @implementation AddViewController
 
-@synthesize itemNameTextField, lenderTextField, startDateButton, endDateButton, datePicker;
+@synthesize itemNameTextField, lenderTextField, startDateButton, endDateButton, uiStartDateButton, uiEndDateButton, datePicker, startDate, endDate;
 
 - (void) save:(id)sender {
 
@@ -22,6 +22,22 @@
     
     self.navigationItem.rightBarButtonItem = saveButton;
     
+    if(lastClickedDateButton == [startDateButton button]) {
+        [startDateButton setDate:[datePicker date]];
+        if([[datePicker date] compare:[endDateButton date]] == NSOrderedDescending) {
+            [endDateButton setDate:[datePicker date]];
+        }
+    }
+    else {
+        [endDateButton setDate:[datePicker date]];
+        if([[datePicker date] compare:[startDateButton date]] == NSOrderedAscending) {
+            [startDateButton setDate:[datePicker date]];
+        }
+    }
+    
+    [startDateButton setTitleFromDate:[startDateButton date] forState:UIControlStateNormal];
+    [endDateButton setTitleFromDate:[endDateButton date] forState:UIControlStateNormal];
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.4];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -30,13 +46,31 @@
     
     [UIView commitAnimations];
 }
-
+ 
 - (IBAction) showDatePicker:(id)sender {
+    NSLog(@"Show datepicker");
     datePicker.center = CGPointMake(160, self.view.center.y + (self.view.frame.size.height / 2) + (datePicker.frame.size.height / 2));
     
     UIBarButtonItem *pickButton = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Pick", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(hideDatePicker:)] autorelease];
     
     self.navigationItem.rightBarButtonItem = pickButton;
+    
+    lastClickedDateButton = sender;
+    if(sender == [startDateButton button]) {
+        [datePicker setDate:[startDateButton date] animated:YES];
+        if(endDate) {
+            [datePicker setMinimumDate:nil];
+            [datePicker setMaximumDate:endDate];
+        }
+    }
+    else {
+        [datePicker setDate:[endDateButton date] animated:YES];
+        if(startDate) {
+            [datePicker setMinimumDate:startDate];
+            [datePicker setMaximumDate:nil];
+        }
+    }
+    
     
     if(! [datePicker superview]) {
         [[self view] addSubview:datePicker];
@@ -50,6 +84,32 @@
     
     [UIView commitAnimations];
 }
+
+# pragma mark - Gesture Recognizer callbacks
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if([datePicker superview] == [self view]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if(touch.view == [startDateButton button] || touch.view == [endDateButton button] || touch.view == datePicker) {
+        NSLog(@"Should not receive touch");
+        return NO;
+    }
+    NSLog(@"Should receive touch");
+    return YES;
+}
+
+- (void) hideKeyboard:(id)sender {
+    [itemNameTextField resignFirstResponder];
+    [lenderTextField resignFirstResponder];
+}
+
+#pragma mark - Generated methods
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,6 +139,25 @@
     
     self.navigationItem.rightBarButtonItem = saveButton;
     self.navigationItem.title = @"Add";
+    
+    UIGestureRecognizer* tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    
+    [tapGestureRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    [tapGestureRecognizer release];
+    
+    // Associate buttons with UIDateButton class
+    startDateButton = [[UIDateButton alloc] initWithButton:uiStartDateButton];
+    endDateButton = [[UIDateButton alloc] initWithButton:uiEndDateButton];
+    
+    // Set button dates
+    NSDate* date = [NSDate date];
+    
+    [startDateButton setDate:date];
+    [endDateButton setDate:date];
+    
+    [startDateButton setTitleFromDate:date forState:UIControlStateNormal];
+    [endDateButton setTitleFromDate:date forState:UIControlStateNormal];
 }
 
 - (void)viewDidUnload

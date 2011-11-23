@@ -24,6 +24,7 @@
 		2772482D147A9A2D00B9FC56 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2772482E147A9A2D00B9FC56 /* AddViewController.xib */; };
 		27724832147A9DFC00B9FC56 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27724830147A9DFC00B9FC56 /* PickerViewController.m */; };
 		27724833147A9DFC00B9FC56 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27724831147A9DFC00B9FC56 /* PickerViewController.xib */; };
+		5CC9224F147DA52900BCAAFE /* UIDateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9224E147DA52900BCAAFE /* UIDateButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		2772482F147A9DFB00B9FC56 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		27724830147A9DFC00B9FC56 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		27724831147A9DFC00B9FC56 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
+		5CC9224D147DA52900BCAAFE /* UIDateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIDateButton.h; path = ../../../../../../WS1112/PMA/workspace/iLend/iLend/iLend/UIDateButton.h; sourceTree = "<group>"; };
+		5CC9224E147DA52900BCAAFE /* UIDateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIDateButton.m; path = ../../../../../../WS1112/PMA/workspace/iLend/iLend/iLend/UIDateButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				2772482F147A9DFB00B9FC56 /* PickerViewController.h */,
 				27724830147A9DFC00B9FC56 /* PickerViewController.m */,
 				27724831147A9DFC00B9FC56 /* PickerViewController.xib */,
+				5CC9224D147DA52900BCAAFE /* UIDateButton.h */,
+				5CC9224E147DA52900BCAAFE /* UIDateButton.m */,
 			);
 			path = iLend;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				2772481B147A91DC00B9FC56 /* DetailViewController.m in Sources */,
 				27724820147A947E00B9FC56 /* AddViewController.m in Sources */,
 				27724832147A9DFC00B9FC56 /* PickerViewController.m in Sources */,
+				5CC9224F147DA52900BCAAFE /* UIDateButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +318,7 @@
 				27724817147A8E0200B9FC56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
