@@ -11,7 +11,7 @@
 
 @implementation DetailViewController
 
-@synthesize item, itemNameLabel, lenderLabel, lendPeriodLabel;
+@synthesize item, itemNameLabel, lenderLabel, lendPeriodLabel, imageView;
 
 - (void) pushEditViewController: (id)sender {
     AddViewController* addViewController = [[AddViewController alloc] initWithNibName:@"AddViewController" bundle:nil];
@@ -70,6 +70,9 @@
         NSLog(@"View did appear");
         [itemNameLabel setText:[item itemName]];
         [lenderLabel setText:[item lender]];
+        [imageView setImage:[item image]];
+        NSLog(@"Image: %@", [[item image] description]);
+
     }
 }
 

@@ -34,6 +34,7 @@
     [newItem setLender:[lenderTextField text]];
     [newItem setStartDate:[startDateButton date]];
     [newItem setEndDate:[endDateButton date]];
+    [newItem setImage:[imageView image]];
     
     NSError *error = nil;
     [managedObjectContext save:&error];
@@ -263,6 +264,11 @@
         
         [itemNameTextField setText:[item itemName]];
         [lenderTextField setText:[item lender]];
+        [imageView setImage:[item image]];
+        
+        if([item image]) {
+            [imageView setBackgroundColor:[UIColor whiteColor]];
+        }
         
         [startDateButton setDate:[item startDate]];
         [endDateButton setDate:[item endDate]];

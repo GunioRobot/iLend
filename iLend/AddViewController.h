@@ -12,7 +12,7 @@
 #import "UIDateButton.h"
 #import "Item.h"
 
-@interface AddViewController : UIViewController <UIGestureRecognizerDelegate, UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate, UIImagePickerControllerDelegate> {
+@interface AddViewController : UIViewController <UIGestureRecognizerDelegate, UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UITextField* itemNameTextField;
     UITextField* lenderTextField;
     UIButton* uiStartDateButton;

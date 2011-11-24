@@ -18,5 +18,6 @@
 @property(nonatomic, retain) IBOutlet UILabel* itemNameLabel;
 @property(nonatomic, retain) IBOutlet UILabel* lenderLabel;
 @property(nonatomic, retain) IBOutlet UILabel* lendPeriodLabel;
+@property(nonatomic, retain) IBOutlet UIImageView* imageView;
 
 @end
