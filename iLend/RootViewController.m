@@ -141,6 +141,11 @@
     [detailViewController release];
 	*/
     DetailViewController* detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+    
+    Item *managedObject = (Item *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    [detailViewController setItem:managedObject];
+    [managedObject release];
+    
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 }
@@ -171,6 +176,9 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Item *managedObject = (Item *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     cell.textLabel.text = [managedObject valueForKey:@"itemName"];
     cell.detailTextLabel.text = [managedObject valueForKey:@"lender"];
 }

@@ -10,11 +10,9 @@
 #import "AddViewController.h"
 #import "PickerViewController.h"
 
-#import "Item.h"
-
 @implementation AddViewController
 
-@synthesize itemNameTextField, lenderTextField, startDateButton, endDateButton, uiStartDateButton, uiEndDateButton, datePicker, startDate, endDate;
+@synthesize itemNameTextField, lenderTextField, startDateButton, endDateButton, uiStartDateButton, uiEndDateButton, uiShowPeoplePicker, datePicker, item, imageView;
 
 - (void) save:(id)sender {
     NSLog(@"Save");
@@ -24,12 +22,18 @@
     //get the managedObjectContext
     NSManagedObjectContext* managedObjectContext = appDelegate.managedObjectContext;
     
-    Item* item = (Item*) [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:managedObjectContext];
+    Item* newItem;
+    if([self item]) {
+        newItem = [self item];
+    }
+    else {
+        newItem = (Item*) [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:managedObjectContext];
+    }
     
-    [item setItemName:[itemNameTextField text]];
-    [item setLender:[lenderTextField text]];
-    [item setStartDate:[startDateButton date]];
-    [item setEndDate:[endDateButton date]];
+    [newItem setItemName:[itemNameTextField text]];
+    [newItem setLender:[lenderTextField text]];
+    [newItem setStartDate:[startDateButton date]];
+    [newItem setEndDate:[endDateButton date]];
     
     NSError *error = nil;
     [managedObjectContext save:&error];
@@ -81,17 +85,9 @@
     lastClickedDateButton = sender;
     if(sender == [startDateButton button]) {
         [datePicker setDate:[startDateButton date] animated:YES];
-        if(endDate) {
-            [datePicker setMinimumDate:nil];
-            [datePicker setMaximumDate:endDate];
-        }
     }
     else {
         [datePicker setDate:[endDateButton date] animated:YES];
-        if(startDate) {
-            [datePicker setMinimumDate:startDate];
-            [datePicker setMaximumDate:nil];
-        }
     }
     
     
@@ -108,6 +104,87 @@
     [UIView commitAnimations];
 }
 
+# pragma mark - Camera
+
+- (void) showImagePicker {
+    NSLog(@"Camera");
+    
+    //initialize the ImagePicker
+    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+    //set delegate
+    imagePicker.delegate = self;
+    //check if a camera is available and if it is, set the sourceType correspondingly
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"No Camera Available");
+    }
+    //show ImagePicker View
+    [self presentModalViewController:imagePicker animated: YES];
+    [imagePicker release];
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *) editingInfo {
+    // set the image to the view in order to make it visible
+    [imageView setImage:image];
+    // hide ImagePickerView
+    [self dismissModalViewControllerAnimated:YES];
+    
+    [imageView setBackgroundColor:[UIColor whiteColor]];
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    // get the selected image to store it
+    selectedImage = (UIImage *)[info objectForKey: UIImagePickerControllerOriginalImage];
+    // set the image to the view in order to make it visible
+    [imageView setImage:selectedImage];
+    // hide the ImagePickerView
+    [self dismissModalViewControllerAnimated:YES];
+    
+    [imageView setBackgroundColor:[UIColor whiteColor]];
+}
+
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+# pragma mark - Address Book delegates
+
+- (void) showPeoplePicker:(id)sender {
+    ABPeoplePickerNavigationController *picker =[[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    [self presentModalViewController:picker animated:YES];
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
+    [peoplePicker dismissModalViewControllerAnimated:YES];
+}
+
+// Called after a person has been selected by the user.
+// Return YES if you want the person to be displayed.
+// Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
+    NSString* firstName = (NSString *) ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    NSString* lastName = (NSString *) ABRecordCopyValue(person, kABPersonLastNameProperty);
+    
+    [[self lenderTextField] setText:[NSString stringWithFormat:@"%@ %@", firstName, lastName]];
+    
+    [firstName release];
+    [lastName release];
+    
+    [peoplePicker dismissModalViewControllerAnimated:YES];
+    return NO;
+}
+
+// Called after a value has been selected by the user.
+// Return YES if you want default action to be performed.
+// Return NO to do nothing (the delegate is responsible for dismissing the peoplePicker).
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
+    [peoplePicker dismissModalViewControllerAnimated:YES];
+    return NO;
+}
+
 # pragma mark - Gesture Recognizer callbacks
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -119,11 +196,19 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if(touch.view == [startDateButton button] || touch.view == [endDateButton button] || touch.view == datePicker) {
+    if(touch.view == imageView) {
+        [self showImagePicker];
+        
+        return NO;
+    }
+    
+    if(touch.view == [startDateButton button] || touch.view == [endDateButton button] || touch.view == datePicker || touch.view == [self uiShowPeoplePicker]) {
         NSLog(@"Should not receive touch");
         return NO;
     }
-    NSLog(@"Should receive touch");
+    
+    NSLog(@"Should receive touch: %@", [touch.view description]);
+    
     return YES;
 }
 
@@ -173,14 +258,28 @@
     startDateButton = [[UIDateButton alloc] initWithButton:uiStartDateButton];
     endDateButton = [[UIDateButton alloc] initWithButton:uiEndDateButton];
     
-    // Set button dates
-    NSDate* date = [NSDate date];
-    
-    [startDateButton setDate:date];
-    [endDateButton setDate:date];
-    
-    [startDateButton setTitleFromDate:date forState:UIControlStateNormal];
-    [endDateButton setTitleFromDate:date forState:UIControlStateNormal];
+    if([self item]) {
+        NSLog(@"Item passed");
+        
+        [itemNameTextField setText:[item itemName]];
+        [lenderTextField setText:[item lender]];
+        
+        [startDateButton setDate:[item startDate]];
+        [endDateButton setDate:[item endDate]];
+        
+        [startDateButton setTitleFromDate:[item startDate] forState:UIControlStateNormal];
+        [endDateButton setTitleFromDate:[item endDate] forState:UIControlStateNormal];
+    }
+    else {
+        // Set button dates
+        NSDate* date = [NSDate date];
+        
+        [startDateButton setDate:date];
+        [endDateButton setDate:date];
+        
+        [startDateButton setTitleFromDate:date forState:UIControlStateNormal];
+        [endDateButton setTitleFromDate:date forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidUnload
