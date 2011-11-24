@@ -10,6 +10,8 @@
 #import "AddViewController.h"
 #import "DetailViewController.h"
 
+#import "Item.h"
+
 @interface RootViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -83,7 +85,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 
     // Configure the cell.
@@ -168,8 +170,9 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[managedObject valueForKey:@"timeStamp"] description];
+    Item *managedObject = (Item *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [managedObject valueForKey:@"itemName"];
+    cell.detailTextLabel.text = [managedObject valueForKey:@"lender"];
 }
 
 - (void)insertNewObject
@@ -181,7 +184,7 @@
     
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
+    [newManagedObject setValue:@"" forKey:@"itemName"];
     
     // Save the context.
     NSError *error = nil;
@@ -212,14 +215,14 @@
     // Create the fetch request for the entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"itemName" ascending:NO];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];

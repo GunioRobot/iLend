@@ -5,16 +5,39 @@
 //  Created by praktikum on 21.11.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+#import "iLendAppDelegate.h"
 
 #import "AddViewController.h"
 #import "PickerViewController.h"
+
+#import "Item.h"
 
 @implementation AddViewController
 
 @synthesize itemNameTextField, lenderTextField, startDateButton, endDateButton, uiStartDateButton, uiEndDateButton, datePicker, startDate, endDate;
 
 - (void) save:(id)sender {
-
+    NSLog(@"Save");
+    //get the application’s delegate
+    iLendAppDelegate* appDelegate = (iLendAppDelegate*)[[UIApplication sharedApplication]
+                                                          delegate];
+    //get the managedObjectContext
+    NSManagedObjectContext* managedObjectContext = appDelegate.managedObjectContext;
+    
+    Item* item = (Item*) [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:managedObjectContext];
+    
+    [item setItemName:[itemNameTextField text]];
+    [item setLender:[lenderTextField text]];
+    [item setStartDate:[startDateButton date]];
+    [item setEndDate:[endDateButton date]];
+    
+    NSError *error = nil;
+    [managedObjectContext save:&error];
+    if(error) {
+        NSLog(@"Error");
+    }
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void) hideDatePicker: (id)sender {    
