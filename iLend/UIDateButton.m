@@ -16,7 +16,7 @@
     if(self = [super init]) {
         button = buttonVal;
     }
-    
+
     return self;
 }
 
@@ -25,13 +25,13 @@
     NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:dateVal];
-    
+
     NSInteger year = [dateComponents year];
     NSInteger month = [dateComponents month];
     NSInteger day = [dateComponents day];
-    
+
     [[self button] setTitle:[NSString stringWithFormat:@"%02d.%02d.%4d",day,month,year] forState:state];
-    
+
     [calendar release];
 }
 

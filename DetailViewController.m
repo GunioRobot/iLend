@@ -15,10 +15,10 @@
 
 - (void) pushEditViewController: (id)sender {
     AddViewController* addViewController = [[AddViewController alloc] initWithNibName:@"AddViewController" bundle:nil];
-    
+
 
     [addViewController setItem:[self item]];
-    
+
     [self.navigationController pushViewController:addViewController animated:YES];
     [addViewController release];
 }
@@ -36,7 +36,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -47,10 +47,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *editButton = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(pushEditViewController:)] autorelease];
-    
+
     self.navigationItem.rightBarButtonItem = editButton;
     self.navigationItem.title = @"Details";
-    
+
     [itemNameLabel setText:[item itemName]];
     [lenderLabel setText:[item lender]];
 }
@@ -65,7 +65,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     if([self item]) {
         NSLog(@"View did appear");
         [itemNameLabel setText:[item itemName]];
